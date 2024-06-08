@@ -6,6 +6,7 @@ public class Ship extends GameObject {
     private boolean movingLeft;
     private boolean movingRight;
     private long lastShotTime;
+    private int life;
     private static final long SHOT_INTERVAL = 500;
 
     public Ship(int x, int y, int width, int height, int speed) {
@@ -14,6 +15,7 @@ public class Ship extends GameObject {
         this.movingLeft = false;
         this.movingRight = false;
         this.lastShotTime = 0;
+        this.life = 100;
     }
 
     public void setMovingLeft(boolean movingLeft) {
@@ -31,6 +33,13 @@ public class Ship extends GameObject {
         if (movingRight) {
             x += speed;
         }
+    }
+    public void receiveDamage(int damage) {
+        this.life -= damage;
+    }
+
+    public int getLife() {
+        return this.life;
     }
 
     public void render(Graphics g) {
