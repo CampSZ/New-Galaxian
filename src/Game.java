@@ -219,16 +219,19 @@ public class Game extends JPanel implements ActionListener {
         }
         for (EnemyProjectile Enemyprojectile : Enemyprojectiles) {
             System.out.println("teste1");
-            for (Ship ship : ship) {
+            
                 System.out.println("teste2");
-                if (Enemyprojectile.x < ship.x + ship.width && Enemyprojectile.x + Enemyprojectile.width > ship.x &&
-                        Enemyprojectile.y < ship.y + ship.height && Enemyprojectile.y + Enemyprojectile.height > ship.y){
+                if (Enemyprojectile.x < player.x + player.width && Enemyprojectile.x + Enemyprojectile.width > player.x &&
+                        Enemyprojectile.y < player.y + player.height && Enemyprojectile.y + Enemyprojectile.height > player.y){
                     EnemyprojectilesToRemove.add(Enemyprojectile);
-                    shipsToRemove.add(ship);
+                    player.receiveDamage(Enemyprojectile.getDamage());
+                    if(player.getLife() == 0) {
+                        player = null;
+                    }
                     System.out.println("teste3");
                 }
 
-            }
+            
 
         }
 
